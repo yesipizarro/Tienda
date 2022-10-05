@@ -1,0 +1,26 @@
+@import "../../variables.scss";
+
+.contenedor_titulo {
+    display: flex;
+    justify-content: center;
+}
+.titulo {
+    width: 80%;
+    margin-left: 15px;
+    height: 70px;
+}
+hr {
+    color: $red;
+    width: 1309px;
+}
+.carro {
+    width: 12%;
+    height: 70px;
+    border-left: rgba($black, 0.139) solid 1.5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.espacio {
+    width: 90%;
+}
