@@ -11,10 +11,11 @@
 }
 .contenedor_tarjetas {
     display: flex;
-    height: 100%;
+    height: 600px;
     text-align: center;
     flex-wrap: wrap;
     margin: 10px;
+    overflow: scroll;
 }
 
 .prueba {
