@@ -55,13 +55,21 @@
                     *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['minlength']">
                     Son mínimo 6 caracteres !
                 </div>
-                <div class="alerta" *ngIf="crearUsuarioFormulario?.errors?.['passDiff']">
-                    las contraseñas no coinciden!
-                </div>
             </div>
+
+            <div class="alerta" *ngIf="crearUsuarioFormulario?.errors?.['passDiff']">
+                las contraseñas no coinciden!
+            </div>
+
+
+
             <button class="boton" type="submit" mat-raised-button color="primary"
                 [disabled]="!crearUsuarioFormulario.valid">Crear</button>
+
         </form>
+
     </div>
+
+
 
 </div>

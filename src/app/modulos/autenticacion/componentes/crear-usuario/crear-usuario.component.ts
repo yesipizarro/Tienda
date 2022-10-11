@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormGroupName, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { SerCrearUsuarioService } from 'src/app/ser-crear-usuario.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserCredential } from '@firebase/auth';
+import { ConexionFirebaseService } from 'src/app/conexion-firebase.service';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -9,29 +11,32 @@ import { SerCrearUsuarioService } from 'src/app/ser-crear-usuario.service';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  constructor(private s: SerCrearUsuarioService) { }
-
-  coinsiden = true;
-
-
+  constructor(private serviciosFirebase: ConexionFirebaseService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   enviar() {
     let infoEmail = this.crearUsuarioFormulario.value.email;
-    debugger
     let infocontraseña = this.crearUsuarioFormulario.value.password;
     let infoConfirmarContraseña = this.crearUsuarioFormulario.value.confirmarPassword;
+    this.serviciosFirebase.crearUsuario(infoEmail, infocontraseña).subscribe({
+      next: (usuario: UserCredential) => {
+        debugger
+      },
+      error: (mensaje) => {
+        this._snackBar.open(mensaje, "ok");
+      }
+    });
   }
 
   crearUsuarioFormulario: FormGroup = new FormGroup({
     email: new FormControl(undefined, [Validators.required, Validators.email]),
-    password: new FormControl(undefined, [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/), this.validar()]),
-    confirmarPassword: new FormControl(undefined, [Validators.required, Validators.minLength(6)])
+    password: new FormControl(undefined, [Validators.required, Validators.minLength(6), this.validar()]),
+    confirmarPassword: new FormControl(undefined, [Validators.required])
   },
     this.validarPasswod()
-  )
+  );
 
   validar(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -45,6 +50,7 @@ export class CrearUsuarioComponent implements OnInit {
       return null;
     }
   }
+
   validarPasswod(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (control.get('password')?.value !== control.get('confirmarPassword')?.value) {

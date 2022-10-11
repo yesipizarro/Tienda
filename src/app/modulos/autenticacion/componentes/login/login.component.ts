@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SerCrearUsuarioService } from 'src/app/ser-crear-usuario.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { SerCrearUsuarioService } from 'src/app/ser-crear-usuario.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private s: SerCrearUsuarioService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

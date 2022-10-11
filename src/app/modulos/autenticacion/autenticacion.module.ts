@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SerCrearUsuarioService } from 'src/app/ser-crear-usuario.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 const routesAutenticacion: Routes = [
@@ -33,8 +34,9 @@ const routesAutenticacion: Routes = [
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routesAutenticacion)
+    RouterModule.forChild(routesAutenticacion),
+    MatSnackBarModule
   ],
-  providers: [SerCrearUsuarioService]
+
 })
 export class AutenticacionModule { }
