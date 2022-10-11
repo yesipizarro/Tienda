@@ -1,22 +1,67 @@
-<!-- <div class="contenedor">
+<div class="contenedor">
 
     <div class="contendor_crearUsuario">
         <div class="titulo_formulario">
             Crear Usuario
         </div>
-        <form class="estilosFormularo">
-            <input class="items" placeholder="Email">
-            <input class="items" placeholder="Contraseña">
-            <input class="items" placeholder="Confirmar contraseña">
-            <div class="boton">
-                <button mat-raised-button color="primary">Primary</button>
+        <form [formGroup]="crearUsuarioFormulario" class="estilosFormularo" (ngSubmit)="enviar()">
+            <div>
+                <input class="items" type="email" formControlName="email" placeholder="Email">
+                <div class="alerta "
+                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['required']">
+                    El campo es requerido!
+                </div>
+                <div class="alerta "
+                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
+                    Debe ser de tipo Email!
+                </div>
+                <div class="alerta "
+                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
+                    Debe ser de tipo Email!
+                </div>
             </div>
-        </form>
+            <div>
+                <input class="items" type="password" formControlName="password" placeholder="Contraseña">
+                <div class="alerta"
+                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['required']">
+                    La contraseña es requerida !
+                </div>
+                <div class="alertaEspecial"
+                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['letraMayuscula']">
+                    La contraseña debe tener una mayuscula!
+                </div>
+                <div class="alertaEspecial"
+                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['numero']">
+                    La contraseña debe tener al menos un numero!
+                </div>
+                <div class="alertaEspecial"
+                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['caracter']">
+                    La contraseña debe tener al menos un caracter!
+                </div>
+                <div class="alerta"
+                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['minlength']">
+                    Son mínimo 6 caracteres !
+                </div>
+            </div>
 
+            <div>
+                <input class="items" type="password" formControlName="confirmarPassword"
+                    placeholder="Confirmar contraseña">
+                <div class="alerta"
+                    *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['required']">
+                    La contraseña es requerida !
+                </div>
+                <div class="alerta"
+                    *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['minlength']">
+                    Son mínimo 6 caracteres !
+                </div>
+                <div class="alerta" *ngIf="crearUsuarioFormulario?.errors?.['passDiff']">
+                    las contraseñas no coinciden!
+                </div>
+            </div>
+            <button class="boton" type="submit" mat-raised-button color="primary"
+                [disabled]="!crearUsuarioFormulario.valid">Crear</button>
+        </form>
     </div>
 
-
-
-</div> -->
-
-<div class="test"></div>
+</div>
