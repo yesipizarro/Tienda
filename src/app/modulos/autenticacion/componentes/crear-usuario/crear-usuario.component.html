@@ -16,6 +16,10 @@
                     *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
                     Debe ser de tipo Email!
                 </div>
+                <div class="alerta "
+                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
+                    Debe ser de tipo Email!
+                </div>
             </div>
             <div>
                 <input class="items" type="password" formControlName="password" placeholder="Contraseña">
@@ -66,10 +70,5 @@
         </form>
 
     </div>
-
-
-
-
-
 
 </div>

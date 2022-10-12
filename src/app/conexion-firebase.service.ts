@@ -36,7 +36,6 @@ export class ConexionFirebaseService {
           throw message;
         })
       );
-
   }
 
 
