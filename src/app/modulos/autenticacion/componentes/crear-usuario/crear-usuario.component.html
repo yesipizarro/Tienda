@@ -1,8 +1,9 @@
 <div class="contenedor">
-
+    <span class="titulo">Bienvenido a Perritos Felices!</span>
     <div class="contendor_crearUsuario">
+
         <div class="titulo_formulario">
-            Crear Usuario
+            Crear Tu Usuario
         </div>
         <form [formGroup]="crearUsuarioFormulario" class="estilosFormularo" (ngSubmit)="enviar()">
             <div>
@@ -10,10 +11,6 @@
                 <div class="alerta "
                     *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['required']">
                     El campo es requerido!
-                </div>
-                <div class="alerta "
-                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
-                    Debe ser de tipo Email!
                 </div>
                 <div class="alerta "
                     *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
@@ -63,12 +60,15 @@
 
 
 
-            <button class="boton" type="submit" mat-raised-button color="primary"
-                [disabled]="!crearUsuarioFormulario.valid">Crear</button>
+            <button class="boton" type="submit" mat-raised-button [disabled]="!crearUsuarioFormulario.valid"> Crear
+                Usuario</button>
 
         </form>
 
     </div>
+
+
+
 
 
 

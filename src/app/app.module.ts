@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,6 +35,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule
 
   ],
   providers: [],

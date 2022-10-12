@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, FormGroupName, ValidationError
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserCredential } from '@firebase/auth';
 import { ConexionFirebaseService } from 'src/app/conexion-firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -11,7 +12,7 @@ import { ConexionFirebaseService } from 'src/app/conexion-firebase.service';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  constructor(private serviciosFirebase: ConexionFirebaseService, private _snackBar: MatSnackBar) { }
+  constructor(private serviciosFirebase: ConexionFirebaseService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,7 @@ export class CrearUsuarioComponent implements OnInit {
     let infoConfirmarContraseña = this.crearUsuarioFormulario.value.confirmarPassword;
     this.serviciosFirebase.crearUsuario(infoEmail, infocontraseña).subscribe({
       next: (usuario: UserCredential) => {
-        debugger
+        this.router.navigate(['autenticacion']);
       },
       error: (mensaje) => {
         this._snackBar.open(mensaje, "ok");
