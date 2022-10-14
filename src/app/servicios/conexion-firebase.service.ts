@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword, UserCredential, AuthError } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FirebaseError, initializeApp } from "firebase/app";
-import { catchError, concatMap, debounceTime, from, Observable, throwError } from 'rxjs';
+import { catchError, from, Observable } from 'rxjs';
+import { GoogleAuthProvider } from "firebase/auth";
+
+enum ErrorFirebaseCustom {
+  INICIO_SESION_FALLA = 'No se pudo iniciar sesión',
+  CORREO_EXISTE = 'El correo ya existe',
+  PASSWORD = 'Usuario o Contraseña invalida'
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,22 +28,43 @@ export class ConexionFirebaseService {
   // Initialize Firebase
   app = initializeApp(this.firebaseConfig);
   auth = getAuth(this.app);
+  googleAuth = new GoogleAuthProvider();
 
   constructor() { }
 
   crearUsuario(infoEmail: string, infocontraseña: string): Observable<UserCredential> {
-
     return from(createUserWithEmailAndPassword(this.auth, infoEmail, infocontraseña))
       .pipe(
         catchError((error: FirebaseError) => {
-          let message = '';
+          let message = ErrorFirebaseCustom.INICIO_SESION_FALLA;
           if (error.code === "auth/email-already-in-use") {
-            message = 'El correo ya existe';
+            message = ErrorFirebaseCustom.CORREO_EXISTE;
           }
           throw message;
         })
       );
   }
 
+  login(loginCorreo: string, logincontraseña: string) {
+    return from(signInWithEmailAndPassword(this.auth, loginCorreo, logincontraseña))
+      .pipe(
+        catchError((error: FirebaseError) => {
+          let message = ErrorFirebaseCustom.INICIO_SESION_FALLA;
+          if (error.code === "auth/wrong-password") {
+            message = ErrorFirebaseCustom.PASSWORD;
+          }
+          throw message;
+        })
+      );
+  }
+
+  iniciarSesionGoogle() {
+    return from(signInWithPopup(this.auth, this.googleAuth))
+      .pipe(
+        catchError(() => {
+          throw ErrorFirebaseCustom.INICIO_SESION_FALLA;
+        })
+      );
+  }
 
 }

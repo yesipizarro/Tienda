@@ -34,11 +34,10 @@
 
                     <p class="formulario__crear">¿No estas registrado? <a routerLink="crear">Crear un Usuario</a>.
                     </p>
-
-                    <button mat-button class="formulario__boton">
-                        <mat-icon class="formulario__logoGoogle" svgIcon="logoGoogle"></mat-icon> Ingresa con Google
-                    </button>
                 </form>
+                <button mat-button class="formulario__boton" (click)="ingresarGoogle()">
+                    <mat-icon svgIcon="logoGoogle"></mat-icon> Ingresa con Google
+                </button>
 
             </div>
         </div>
