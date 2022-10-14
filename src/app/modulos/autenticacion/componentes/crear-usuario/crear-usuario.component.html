@@ -1,71 +1,60 @@
 <div class="contenedor">
-    <span class="titulo">Bienvenido a Perritos Felices!</span>
-    <div class="contendor_crearUsuario">
-
-        <div class="titulo_formulario">
-            Crear Tu Usuario
-        </div>
+    <span class="contenedor__titulo">Bienvenido a Perritos Felices!</span>
+    <div class="contenedorCrearUsuario">
+        <div class="contenedorCrearUsuario__tituloFormulario"> Crear Tu Usuario</div>
         <form [formGroup]="crearUsuarioFormulario" class="estilosFormularo" (ngSubmit)="enviar()">
-            <div>
-                <input class="items" type="email" formControlName="email" placeholder="Email">
-                <div class="alerta "
-                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['required']">
-                    El campo es requerido!
-                </div>
-                <div class="alerta "
-                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
-                    Debe ser de tipo Email!
-                </div>
-                <div class="alerta "
-                    *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']">
-                    Debe ser de tipo Email!
-                </div>
+
+            <input class="estilosFormularo__items " id="crear-correo" type="email" formControlName="email"
+                placeholder="Email">
+            <div *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['required']"
+                appErrorTooltip parent="crear-correo">
+                El campo es requerido!
             </div>
+            <div *ngIf="crearUsuarioFormulario.controls['email']?.touched && crearUsuarioFormulario.controls['email']?.errors?.['email']"
+                appErrorTooltip parent="crear-correo">
+                Debe ser de tipo Email!
+            </div>
+            <input class="estilosFormularo__items" id="crear-password" type="password" formControlName="password"
+                placeholder="Contraseña">
+            <div *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['required']"
+                appErrorTooltip parent="crear-password">
+                La contraseña es requerida !
+            </div>
+            <div *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['letraMayuscula']"
+                appErrorTooltip parent="crear-password">
+                Debe tener una mayuscula!
+            </div>
+            <div *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['numero']"
+                appErrorTooltip parent="crear-password">
+                Debe tener al menos un numero!
+            </div>
+            <div *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['caracter']"
+                appErrorTooltip parent="crear-password">
+                Debe tener al menos un caracter!
+            </div>
+            <div *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['tamaño']"
+                appErrorTooltip parent="crear-password">
+                El tamaño son 6 caracteres !
+            </div>
+
             <div>
-                <input class="items" type="password" formControlName="password" placeholder="Contraseña">
-                <div class="alerta"
-                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['required']">
+                <input class="estilosFormularo__items" id="crear-confirm-password" type="password"
+                    formControlName="confirmarPassword" placeholder="Confirmar contraseña">
+                <div *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['required']"
+                    appErrorTooltip parent="crear-confirm-password">
                     La contraseña es requerida !
                 </div>
-                <div class="alertaEspecial"
-                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['letraMayuscula']">
-                    La contraseña debe tener una mayuscula!
-                </div>
-                <div class="alertaEspecial"
-                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['numero']">
-                    La contraseña debe tener al menos un numero!
-                </div>
-                <div class="alertaEspecial"
-                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['caracter']">
-                    La contraseña debe tener al menos un caracter!
-                </div>
-                <div class="alerta"
-                    *ngIf="crearUsuarioFormulario.controls['password']?.touched && crearUsuarioFormulario.controls['password']?.errors?.['minlength']">
-                    Son mínimo 6 caracteres !
+                <div *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario?.errors?.['passDiff']"
+                    appErrorTooltip parent="crear-confirm-password">
+                    las contraseñas no coinciden!
                 </div>
             </div>
 
-            <div>
-                <input class="items" type="password" formControlName="confirmarPassword"
-                    placeholder="Confirmar contraseña">
-                <div class="alerta"
-                    *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['required']">
-                    La contraseña es requerida !
-                </div>
-                <div class="alerta"
-                    *ngIf="crearUsuarioFormulario.controls['confirmarPassword']?.touched && crearUsuarioFormulario.controls['confirmarPassword']?.errors?.['minlength']">
-                    Son mínimo 6 caracteres !
-                </div>
-            </div>
-
-            <div class="alerta" *ngIf="crearUsuarioFormulario?.errors?.['passDiff']">
-                las contraseñas no coinciden!
-            </div>
-
-
-
-            <button class="boton" type="submit" mat-raised-button [disabled]="!crearUsuarioFormulario.valid"> Crear
+            <button class="estilosFormularo__boton" type="submit" mat-raised-button
+                [disabled]="!crearUsuarioFormulario.valid"> Crear
                 Usuario</button>
+            <button class="estilosFormularo__botonVolver" routerLink="" mat-raised-button>Volver al Login</button>
+
 
         </form>
 

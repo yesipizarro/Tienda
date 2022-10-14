@@ -1,4 +1,4 @@
-@import "../../../../../variables.scss";
+@import "../../../../../styles.scss";
 
 .contenedor {
     background-image: url(../../../../../assets/perritoCrear.jpeg);
@@ -9,14 +9,14 @@
     height: 100%;
     flex-direction: column;
     align-items: flex-end;
-}
-.titulo {
-    font-size: 36px;
-    margin-right: 9%;
-    margin-bottom: 30px;
+    &__titulo {
+        font-size: 36px;
+        margin-right: 9%;
+        margin-bottom: 30px;
+    }
 }
 
-.contendor_crearUsuario {
+.contenedorCrearUsuario {
     opacity: 0.9;
     margin-right: 15%;
     background: $fondo;
@@ -28,17 +28,18 @@
     align-items: center;
     flex-direction: column;
     box-shadow: 2px 5px 16px 0px $madison, 5px 5px 15px 5px rgba($doveGray, 0);
-}
-.titulo_formulario {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $limetitulo;
-    height: 62px;
-    flex-direction: column;
-    margin-bottom: 46px;
-    border-radius: 10px 10px 0px 0px;
+
+    &__tituloFormulario {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $limetitulo;
+        height: 62px;
+        flex-direction: column;
+        margin-bottom: 46px;
+        border-radius: 10px 10px 0px 0px;
+    }
 }
 
 .estilosFormularo {
@@ -46,43 +47,24 @@
     text-align: center;
     justify-content: space-around;
     flex-direction: column;
-    .items {
+    &__items {
         margin-bottom: 10px;
         height: 30px;
         width: 223px;
         border: solid 1px $itemBorde;
         border-radius: 5px;
+        &.ng-invalid.ng-touched {
+            border: solid 2.5px $selectiveYellow;
+            border-radius: 7px;
+        }
     }
-    .boton {
-        margin-top: 16px;
+
+    &__boton {
+        margin-top: 10px;
+        margin-bottom: 10px;
         background: $limetitulo;
     }
-}
-
-.items.ng-invalid.ng-touched {
-    border: solid 2.5px $selectiveYellow;
-    border-radius: 7px;
-}
-
-.test {
-    width: 100%;
-    height: 100%;
-    background: $sannarino;
-    border: solid 10px;
-}
-
-.alertaEspecial {
-    color: $selectiveYellow;
-    background: $mineShaft;
-    box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
-    margin-bottom: 10px;
-    height: 65px;
-    width: 230px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-size: 16px;
+    &__botonVolver {
+        background: $volver;
+    }
 }

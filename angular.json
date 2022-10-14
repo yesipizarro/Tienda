@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "tiendaWeb": {
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en-US": "src/locale/messages.en.json"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,6 +26,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": [
+              "en-US"
+            ],
             "outputPath": "dist/tienda-web",
             "index": "src/index.html",
             "main": "src/main.ts",

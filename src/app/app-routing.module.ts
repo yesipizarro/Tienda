@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: 'autenticacion',
     loadChildren: () => import('./modulos/autenticacion/autenticacion.module').then(m => m.AutenticacionModule)
+  },
+  {
+    path: '',
+    redirectTo: 'autenticacion',
+    pathMatch: 'full'
   }
 ];
 

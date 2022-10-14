@@ -6,8 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CrearUsuarioComponent } from './componentes/crear-usuario/crear-usuario.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { CrearUsuarioComponent } from 'src/app/modulos/autenticacion/componentes/crear-usuario/crear-usuario.component';
+import { ErrorTooltipDirective } from 'src/app/directivas/resaltar.directive';
 
 
 
@@ -25,7 +26,8 @@ const routesAutenticacion: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    ErrorTooltipDirective
   ],
   imports: [
     CommonModule,

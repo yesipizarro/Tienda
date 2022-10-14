@@ -1,0 +1,28 @@
+{
+    "locale": "en-US",
+    "translations": {
+        "1199251710632411871": "Happy Dogs",
+        "193077584785102274": "Welcome to happy dogs!",
+        "2191416879584051893": " Create you user",
+        "5137035732060856480": " This field is required! ",
+        "2173036557110299321": " This should be an Email! ",
+        "6574075996668915240": " The password is required ! ",
+        "4493518040294636293": " The password should containt a capital letter! ",
+        "4831156391073091960": " The password should containt at least one number! ",
+        "7508207928035157256": " The password should containt a special character! ",
+        "7080068497389912043": " The maximum length is 6 characteres! ",
+        "1413251414067981061": " The passwords are different! ",
+        "7670766812355474266": " Create an User",
+        "7109853569533336208": "Create an account",
+        "6597520566647669940": "Email",
+        "6345209632111452747": " Enter an Email! ",
+        "5752331855682104921": "Login",
+        "5353019614678141060": "don't you have an account? {$START_LINK}Create an user{$CLOSE_LINK}. ",
+        "4431623254718111584": "{$START_TAG_MAT_ICON}{$CLOSE_TAG_MAT_ICON} Login with Google ",
+        "3093607696906050276": "Product Name",
+        "2066777549747530645": " Price ",
+        "8524201838416230611": "Add",
+        "4572973192314294092": "Photo of a Shiba Inu",
+        "4538720711278608121": "Confirm Password"
+    }
+}

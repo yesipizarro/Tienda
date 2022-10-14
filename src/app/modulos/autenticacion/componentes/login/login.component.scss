@@ -1,4 +1,4 @@
-@import "../../../../../variables.scss";
+@import "../../../../../styles.scss";
 
 .contenedor {
     display: flex;
@@ -6,61 +6,83 @@
     align-items: center;
     height: 100%;
     background: linear-gradient(to right, $azureRadiance, $resolutionBlue);
+
+    &__login {
+        background: $blanco;
+        width: 660px;
+        height: 408px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 3px 5px -1px #0000006b, 0 6px 10px #0000005e, 0 1px 18px #000000fc;
+    }
+
+    &__imagen {
+        border-radius: 12px 0px 0px 12px;
+    }
 }
 
-.contenedor_login {
-    background: $blanco;
-    width: 660px;
-    height: 408px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 3px 5px -1px #0000006b, 0 6px 10px #0000005e, 0 1px 18px #000000fc;
-}
-.imagen {
-    border-radius: 12px 0px 0px 12px;
-}
-.contnedor_formulario {
+.formulario {
     width: 330px;
     height: 408px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     flex-direction: column;
-}
-.formulario_inicio {
-    width: 300px;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 25px;
-}
-.contenedor_for {
-    width: 296px;
-}
-.formulario {
-    display: flex;
-    flex-direction: column;
-    display: flex;
-    flex-direction: column;
-    width: 99%;
-    .items {
+
+    &__inicio {
+        width: 300px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+
+    &__contenedor {
+        width: 296px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        flex-direction: column;
+        width: 99%;
+    }
+
+    &__titulo {
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    &__subtitulo {
+        font-weight: 300;
+        color: $limedAsh;
+        margin-left: 4px;
+    }
+
+    &__crear {
+        margin-top: 11px;
+        text-align: center;
+    }
+
+    &__items {
         margin-bottom: 15px;
         height: 25px;
+        width: 100%;
+
+        &.ng-invalid.ng-touched {
+            border: 0px;
+            border-bottom: $anzac 1.5px solid;
+        }
     }
-}
-.titulo_formulario {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 3px;
-}
-.subtitulo_formulario {
-    font-weight: 300;
-    color: $limedAsh;
-    margin-left: 4px;
-}
-.crear {
-    margin-top: 11px;
-    text-align: center;
+    &__boton {
+        padding: 1rem;
+    }
+    &__logoGooble {
+        width: 50px;
+        height: 30px;
+    }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DoBootstrap, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorTooltipDirective } from './directivas/resaltar.directive';
 
 
 
@@ -22,8 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     InicioComponent,
     TarjetaComponent,
-    HeaderComponent,
-
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -41,4 +41,6 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap() { }
+}

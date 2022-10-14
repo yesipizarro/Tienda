@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormGroupName, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserCredential } from '@firebase/auth';
-import { ConexionFirebaseService } from 'src/app/conexion-firebase.service';
+import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -33,7 +33,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   crearUsuarioFormulario: FormGroup = new FormGroup({
     email: new FormControl(undefined, [Validators.required, Validators.email]),
-    password: new FormControl(undefined, [Validators.required, Validators.minLength(6), this.validar()]),
+    password: new FormControl(undefined, [this.validar()]),
     confirmarPassword: new FormControl(undefined, [Validators.required])
   },
     this.validarPasswod()
@@ -41,12 +41,16 @@ export class CrearUsuarioComponent implements OnInit {
 
   validar(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (!(/[A-Z]+/.test(control.value))) {
+      if (!control.value) {
+        return { required: true };
+      } else if (!(/[A-Z]+/.test(control.value))) {
         return { letraMayuscula: true };
       } else if (!(/[0-9]+/.test(control.value))) {
         return { numero: true };
-      } else if (!(/[$&+,:;=?@#|'<>.-^*()%!]/.test(control.value))) {
+      } else if (!(/[$&+,:;=?@#|'<>*()%!]/.test(control.value))) {
         return { caracter: true };
+      } else if (!(/^[\s\S]{6,6}$/.test(control.value))) {
+        return { tamaño: true };
       }
       return null;
     }
@@ -54,7 +58,9 @@ export class CrearUsuarioComponent implements OnInit {
 
   validarPasswod(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (control.get('password')?.value !== control.get('confirmarPassword')?.value) {
+      if (!control.value) {
+        return { required: true };
+      } else if (control.get('password')?.value !== control.get('confirmarPassword')?.value) {
         return { passDiff: true };
       }
       return null;
