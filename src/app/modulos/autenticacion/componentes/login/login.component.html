@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="contenedor">
+    <div class="contenedor__login">
+        <img class="contenedor__imagen" src="../../../../../assets/perritoOk.jpeg">
+        <div class="formulario">
+            <div class="formulario__inicio">
+                <span class="formulario__titulo">Bienvenido a Perritos Felices!</span>
+                <span class="formulario__subtitulo">Registra tu cuenta</span>
+            </div>
+            <div class="formulario__contenedor">
+                <form [formGroup]="formLogin" class="formulario__content" (ngSubmit)="enviar()">
+
+                    <input class="formulario__items" id="login-correo" type="email" placeholder="Correo"
+                        formControlName="correo">
+
+                    <div *ngIf="formLogin.controls['correo']?.touched && formLogin.controls['correo']?.errors?.['required']"
+                        appErrorTooltip parent="login-correo">
+                        El campo es requerido!
+                    </div>
+                    <div *ngIf="formLogin.controls['correo']?.touched && formLogin.controls['correo']?.errors?.['email']"
+                        appErrorTooltip parent="login-correo">
+                        Debe ingresar un correo!
+                    </div>
+
+                    <input class="formulario__items" id="login-password" type="password" placeholder="Contraseña"
+                        formControlName="password">
+
+                    <div *ngIf="formLogin.controls['password']?.touched && formLogin.controls['password']?.errors?.['required']"
+                        appErrorTooltip parent="login-password">
+                        El campo es requerido!
+                    </div>
+
+                    <button mat-raised-button type="submit" color="primary"
+                        [disabled]="!formLogin.valid">Ingresar</button>
+
+                    <p class="formulario__crear">¿No estas registrado? <a routerLink="crear">Crear un Usuario</a>.
+                    </p>
+
+                    <button mat-button class="formulario__boton">
+                        <mat-icon class="formulario__logoGoogle" svgIcon="logoGoogle"></mat-icon> Ingresa con Google
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

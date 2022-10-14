@@ -1,0 +1,28 @@
+{
+  "locale": "es-CO",
+  "translations": {
+    "1199251710632411871": "Perritos Felices",
+    "193077584785102274": "Bienvenido a Perritos Felices!",
+    "2191416879584051893": " Crear Tu Usuario",
+    "5137035732060856480": " El campo es requerido! ",
+    "2173036557110299321": " Debe ser de tipo Email! ",
+    "6574075996668915240": " La contraseña es requerida ! ",
+    "4493518040294636293": " La contraseña debe tener una mayuscula! ",
+    "4831156391073091960": " La contraseña debe tener al menos un numero! ",
+    "7508207928035157256": " La contraseña debe tener al menos un caracter! ",
+    "7080068497389912043": " El tamaño son 6 caracteres ! ",
+    "4538720711278608121": "Confirmar contraseña",
+    "1413251414067981061": " las contraseñas no coinciden! ",
+    "7670766812355474266": " Crear Usuario",
+    "7109853569533336208": "Registra tu cuenta",
+    "6597520566647669940": "Correo",
+    "6345209632111452747": " Debe ingresar un correo! ",
+    "5752331855682104921": "Ingresar",
+    "5353019614678141060": "¿No estas registrado? {$START_LINK}Crear un Usuario{$CLOSE_LINK}. ",
+    "4431623254718111584": "{$START_TAG_MAT_ICON}{$CLOSE_TAG_MAT_ICON} Ingresa con Google ",
+    "3093607696906050276": "Nombre del Producto",
+    "2066777549747530645": " Precio ",
+    "8524201838416230611": "Agregar",
+    "4572973192314294092": "Photo of a Shiba Inu"
+  }
+}
