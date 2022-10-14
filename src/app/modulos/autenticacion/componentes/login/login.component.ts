@@ -1,7 +1,5 @@
-import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
-import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserCredential } from '@firebase/auth';
