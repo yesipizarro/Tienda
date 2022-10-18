@@ -1,31 +1,76 @@
 @import "../../../../../styles.scss";
 
-.contenedor {
-    background-color: $alabaster;
+.contenedorGeneral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 65%;
+    margin-top: 45px;
+    &__titulo {
+        color: #21a6b1;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    &__subtitulo {
+        color: #a8aeba;
+        font: 400 13px sans-serif;
+        margin-top: 7px;
+    }
+}
+
+.contenedorGeneralTajetas {
+    margin-top: 30px;
+    background-image: url(../../../../../assets/fondo.webp);
     width: 1400px;
+    overflow: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-    margin-left: 17px;
-}
-.contenedor_tarjetas {
-    display: flex;
-    height: 600px;
-    text-align: center;
     flex-wrap: wrap;
-    margin: 10px;
-    overflow: scroll;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+.contenedortarjetas {
+    display: flex;
+    text-align: center;
+    background: $blanco;
+    flex-direction: column;
+    border-radius: 16px;
+    margin: 25px 10px;
+}
+.contenedorImagen {
+    width: 250px;
+    margin-top: 15px;
+    &__imagenTamaño {
+        width: 220px;
+        height: 220px;
+    }
 }
 
-.prueba {
-    width: 255px;
-    margin: 10px;
+.contenedorInfo {
+    display: flex;
+    flex-direction: column;
+    &__nombre {
+        margin-bottom: 6px;
+    }
 }
-.imagen {
-    width: 190px;
-    margin-bottom: 6px;
-}
-.precio {
+
+.contenedorPrecio {
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__desde {
+        font-size: 15px;
+        color: #7d7d7d;
+        margin-right: 5px;
+    }
+    &__precio {
+        color: #21a6b1;
+        font-size: 25px;
+        font-weight: 400;
+    }
+    &__boton {
+        width: 100%;
+    }
 }

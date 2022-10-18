@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { PruebaComponent } from './componentes/prueba/header.component';
+
 
 
 
@@ -26,10 +26,7 @@ const routesVentas: Routes = [
         path: '',
         component: TarjetaComponent
       },
-      {
-        path: 'prueba',
-        component: PruebaComponent
-      }
+
     ]
   }
 ]
@@ -39,7 +36,7 @@ const routesVentas: Routes = [
     InicioComponent,
     TarjetaComponent,
     HeaderComponent,
-    PruebaComponent
+
   ],
   imports: [
     CommonModule,
