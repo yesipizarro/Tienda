@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  pedido = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  pedidos() {
+    this.pedido = !this.pedido;
+  }
 }

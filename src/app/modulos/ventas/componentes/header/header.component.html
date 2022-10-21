@@ -1,5 +1,22 @@
 <div class="contenedorHeader">
     <span class="contenedorHeader__titulo">Peludos Felices</span>
     <span class="contenedorHeader__espacio"></span>
-    <mat-icon class="contenedorHeader__carro">shopping_cart</mat-icon>
+
+    <button class="contenedorCarro" (click)="pedidos()">
+        <mat-icon class="contenedorCarro__carroIcon">shopping_cart</mat-icon>
+        <div *ngIf="pedido" class="contenedorCarro__modal">
+            <button class=""></button>
+            <div class="contenedorSubtotal">
+                <span class="contenedorSubtotal__label">Subtotal</span>
+                <div class="contenedorPrecio">
+                    <span class="contenedorPrecio__precio">$50.000</span>
+                </div>
+            </div>
+            <button class="contenedorCarro__boton">Finalizar Pedido</button>
+
+            <div></div>
+        </div>
+    </button>
+
+
 </div>

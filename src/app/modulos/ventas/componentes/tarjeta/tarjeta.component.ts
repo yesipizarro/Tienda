@@ -18,7 +18,7 @@ export class TarjetaComponent implements OnInit {
   }
 
   agregar(producto: IProductoDetalle) {
-    console.log(`dieron click en agregar para el producto ${producto.nombre}`)
+    this.conexionFirebaseService.pedidoCarrito(producto)
   }
 
 }

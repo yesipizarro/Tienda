@@ -112,5 +112,9 @@ export class ConexionFirebaseService {
 
   }
 
+  pedidoCarrito(producto: IProductoDetalle) {
+    console.log(producto)
+  }
+
 
 }

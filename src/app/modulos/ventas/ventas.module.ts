@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { CompartidoModule } from '../compartido/compartido.module';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
 
 
 
@@ -37,6 +38,7 @@ const routesVentas: Routes = [
     InicioComponent,
     TarjetaComponent,
     HeaderComponent,
+    CarritoComponent,
 
   ],
   imports: [
