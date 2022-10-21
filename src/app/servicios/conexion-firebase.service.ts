@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FirebaseError, initializeApp } from "firebase/app";
-import { catchError, from, Observable } from 'rxjs';
+import { catchError, from, map, Observable } from 'rxjs';
 import { GoogleAuthProvider } from "firebase/auth";
+import { getDatabase, ref, set, get, child, remove } from "firebase/database";
+import { IProductoDetalle, IProductoFirebase } from '../modulos/compartido/interfaces/producto.interface';
 
 enum ErrorFirebaseCustom {
   INICIO_SESION_FALLA = 'No se pudo iniciar sesión',
@@ -14,7 +16,6 @@ enum ErrorFirebaseCustom {
   providedIn: 'root'
 })
 export class ConexionFirebaseService {
-
   firebaseConfig = {
     apiKey: "AIzaSyAR4d-4ylKLjY_GlW3kuOJ8l-7l399f89M",
     authDomain: "tienda-55641.firebaseapp.com",
@@ -29,6 +30,7 @@ export class ConexionFirebaseService {
   app = initializeApp(this.firebaseConfig);
   auth = getAuth(this.app);
   googleAuth = new GoogleAuthProvider();
+  database = getDatabase();
 
   constructor() { }
 
@@ -66,5 +68,49 @@ export class ConexionFirebaseService {
         })
       );
   }
+
+  escribriInfoProducto(id, nombre, cantidad, precio, categoria, imagen) {
+    return from(set(ref(this.database, 'productos/' + id), {
+      nombre: nombre,
+      cantidad: cantidad,
+      precio: precio,
+      categoria: categoria,
+      imagen: imagen
+    }));
+  }
+
+  getProductos(): Observable<IProductoDetalle[]> {
+    return from(get(child(ref(this.database), 'productos')))
+      .pipe(
+        map(snapshot => snapshot.val()),
+        map((productos: IProductoFirebase) => {
+          let productosMapeados: IProductoDetalle[] = [];
+          for (let productoId in productos) {
+            productosMapeados.push({
+              ...productos[productoId],
+              id: productoId,
+            });
+          }
+          return productosMapeados;
+        })
+      );
+  }
+
+  getProductoPorId(id: string): Observable<IProductoDetalle> {
+    return from(get(child(ref(this.database), `productos/${id}`)))
+      .pipe(
+        map(snapshot => snapshot.val())
+      );
+  }
+
+  editandoElProducto(producto: IProductoDetalle) {
+    return from(set(child(ref(this.database), `/productos/${producto.id}`), producto))
+  }
+
+  eliminarProd(producto: IProductoDetalle) {
+    return from(remove(ref(this.database, 'productos/' + producto.id)));
+
+  }
+
 
 }

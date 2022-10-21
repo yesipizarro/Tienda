@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { CompartidoModule } from '../compartido/compartido.module';
 
 
 
@@ -49,6 +50,7 @@ const routesVentas: Routes = [
     MatInputModule,
     HttpClientModule,
     RouterModule.forChild(routesVentas),
+    CompartidoModule
   ],
 
 })
