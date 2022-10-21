@@ -1,0 +1,72 @@
+@import "../../../../../styles.scss";
+
+.contenedor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../../../../assets/gato.jpeg);
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    align-items: flex-end;
+}
+
+.contenedorTitulo {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    &__titulo {
+        font-size: 25px;
+        color: $easternBlue;
+        margin: 15px 90px;
+    }
+    &__boton {
+        margin: 15px 30px;
+        background: $easternBlue;
+        border: 1px solid $easternBlue;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    &__icono {
+        color: $blanco;
+    }
+}
+
+.contendorFormulario {
+    margin-right: 17%;
+    width: 30%;
+    height: 61%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0.9;
+    border-radius: 15px;
+    font-size: 18px;
+    border: solid 1px #bdb8b88c;
+    &__label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    &__form {
+        display: flex;
+        width: 70%;
+        height: 85%;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    &__inputs {
+        height: 30px;
+        margin-bottom: 10px;
+        border: solid 1px #bdb8b88c;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+    &__boton {
+        height: 35px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background: $limetitulo;
+        border-radius: 5px;
+        border: solid 1px $limetitulo;
+    }
+}

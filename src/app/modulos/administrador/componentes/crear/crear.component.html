@@ -1,0 +1,41 @@
+<div class="contenedor">
+    <div class="contenedorSidebar">
+        <span class="contenedorSidebar__titulo">Peludos Felices</span>
+        <span class="contenedorSidebar__subtitulo">Administra los productos en las siguientes opciones</span>
+        <a routerLink="">Menu Productos</a>
+        <a routerLink="">Ordenes</a>
+    </div>
+
+
+
+    <div class="contenedorMenu">
+        <span class="contenedorMenu__titulo"> Menu Productos</span>
+        <button class="contenedorMenu__boton" routerLink="add" mat-raised-button color="primary">Agregar
+            Producto</button>
+        <img class="contenedorMenu__imagen" src="../../../../../assets/peadmi.png">
+
+        <div class="contenedorMenu__vista">
+
+            <mat-form-field class="contenedorCategoria" appearance="fill">
+                <mat-label>Categoria</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let c of categoria" [value]="c.tipoVista">
+                        {{c.tipoVista}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="contenedorProductos">
+                <app-producto *ngFor="let p of productos" [producto]="p" [isAdmin]="true" (onClickAccion)="editar(p)"
+                    (eliminar)="elinarProducto(p)">
+                </app-producto>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>

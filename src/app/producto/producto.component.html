@@ -1,0 +1,27 @@
+<div class="contenedortarjetas">
+    <div class="contenedorImagen">
+        <img class="contenedorImagen__imagenTamaño" [src]="producto?.imagen">
+    </div>
+    <div class="contenedorInfo">
+        <span class="contenedorInfo__nombre">{{producto?.nombre}}</span>
+        <span class="contenedorInfo__cantidad" *ngIf="isAdmin">
+            Cantidad: {{producto?.cantidad}}
+        </span>
+        <div class="contenedorPrecio">
+            <p class="contenedorPrecio__desde">
+                desde
+            </p>
+            <p class="contenedorPrecio__precio">
+                {{producto?.precio}}
+            </p>
+        </div>
+        <div>
+            <button class="contenedorPrecio__boton" mat-raised-button color="primary"
+                (click)="onClickAccion.emit()">{{isAdmin ? 'Editar' :
+                'Agregar'}}
+            </button>
+            <button *ngIf="isAdmin" class="contenedorPrecio__boton" mat-raised-button color="warn"
+                (click)="eliminar.emit()">Eliminar </button>
+        </div>
+    </div>
+</div>

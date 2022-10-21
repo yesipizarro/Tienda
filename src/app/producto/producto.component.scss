@@ -1,0 +1,55 @@
+@import "../../styles.scss";
+
+.contenedortarjetas {
+    display: flex;
+    text-align: center;
+    background: $blanco;
+    flex-direction: column;
+    border-radius: 16px;
+    margin: 25px 10px;
+    border: 1px solid $pinkSwan;
+    width: 250px;
+}
+.contenedorImagen {
+    width: 250px;
+    margin-top: 15px;
+    &__imagenTamaño {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+.contenedorInfo {
+    display: flex;
+    flex-direction: column;
+    &__nombre {
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    &__cantidad {
+        margin-bottom: 10px;
+        font-weight: 100;
+    }
+}
+
+.contenedorPrecio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__desde {
+        font-size: 15px;
+        color: $blouder;
+        margin-right: 5px;
+    }
+    &__precio {
+        color: $easternBlue;
+        font-size: 25px;
+        font-weight: 400;
+    }
+    &__boton {
+        width: 35%;
+
+        margin: 15px 10px;
+    }
+}

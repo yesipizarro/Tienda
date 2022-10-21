@@ -8,7 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './componentes/login/login.component';
 import { CrearUsuarioComponent } from 'src/app/modulos/autenticacion/componentes/crear-usuario/crear-usuario.component';
-import { ErrorTooltipDirective } from 'src/app/directivas/resaltar.directive';
+import { CompartidoModule } from '../compartido/compartido.module';
+
 
 
 
@@ -27,7 +28,7 @@ const routesAutenticacion: Routes = [
   declarations: [
     LoginComponent,
     CrearUsuarioComponent,
-    ErrorTooltipDirective
+
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,8 @@ const routesAutenticacion: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routesAutenticacion),
     MatSnackBarModule,
-    RouterModule
+    RouterModule,
+    CompartidoModule
   ],
 
 })

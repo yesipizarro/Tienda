@@ -1,0 +1,64 @@
+@import "../../../../../styles.scss";
+
+.contenedor {
+    display: flex;
+}
+.contenedorSidebar {
+    background-color: $easternBlue;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 15px;
+    box-shadow: 6px 0px 7px 3px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 20%), 0px 1px 3px 0px rgb(0 0 0 / 20%);
+
+    &__titulo {
+        font-size: 30px;
+        color: $blanco;
+        font-family: "Chalkduster";
+        margin: 15px 0px;
+    }
+    &__subtitulo {
+        font: 400 13px sans-serif;
+        margin-bottom: 40px;
+    }
+}
+
+.contenedorMenu {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    &__titulo {
+        font: 400 13px sans-serif;
+        margin: 40px 15px 15px;
+        font-size: 25px;
+    }
+    &__boton {
+        width: 15%;
+        margin-left: 15px;
+        background: $earlsGreen;
+    }
+    &__imagen {
+        width: 225px;
+        position: absolute;
+        right: 100px;
+    }
+    &__vista {
+        background-color: $contenedorProductosMenu;
+        margin: 32px 15px;
+        border-radius: 13px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.contenedorCategoria {
+    margin-top: 3%;
+    width: 40%;
+}
+.contenedorProductos {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -1,0 +1,66 @@
+<div class="contenedor">
+    <div class="contenedorTitulo">
+        <button routerLink=".." class="contenedorTitulo__boton">
+            <mat-icon class="contenedorTitulo__icono">arrow_back</mat-icon>
+        </button>
+        <span class="contenedorTitulo__titulo">Agregar Producto</span>
+    </div>
+
+    <div class="contendorFormulario" *ngIf="formProducto">
+        <form [formGroup]="formProducto" class="contendorFormulario__form" (ngSubmit)="enviar()">
+            <label class="contendorFormulario__label" for="nombre">Nombre Producto</label>
+            <input class="contendorFormulario__inputs" formControlName="nombre" id="nombre" [id]="" type="text">
+            <div *ngIf="formProducto.controls['nombre']?.touched && formProducto.controls['nombre']?.errors?.['required']"
+                appErrorTooltip parent="nombre">
+                El campo es requerido!
+            </div>
+
+            <label class="contendorFormulario__label" for="cantidad">Cantidad Producto</label>
+            <input class="contendorFormulario__inputs" formControlName="cantidad" id="cantidad" type="number">
+            <div *ngIf="formProducto.controls['cantidad']?.touched && formProducto.controls['cantidad']?.errors?.['required']"
+                appErrorTooltip parent="cantidad">
+                El campo es requerido!
+            </div>
+            <div *ngIf="formProducto.controls['cantidad']?.touched && formProducto.controls['cantidad']?.errors?.['min']"
+                appErrorTooltip parent="cantidad">
+                Solo numeros positivos!
+            </div>
+
+            <label class="contendorFormulario__label" for="precio">Precio Producto</label>
+            <input class="contendorFormulario__inputs" formControlName="precio" id="precio" type="number">
+            <div *ngIf="formProducto.controls['precio']?.touched && formProducto.controls['precio']?.errors?.['required']"
+                appErrorTooltip parent="precio">
+                El campo es requerido!
+            </div>
+            <div *ngIf="formProducto.controls['precio']?.touched && formProducto.controls['precio']?.errors?.['min']"
+                appErrorTooltip parent="precio">
+                Solo numeros positivos!
+            </div>
+
+            <label class="contendorFormulario__label" for="categoria">Categoria</label>
+
+            <mat-select class="contendorFormulario__inputs" formControlName="categoria" id="categoria">
+                <mat-option *ngFor="let c of categoria" [value]="c.tipoVista">
+                    {{c.tipoVista}}
+                </mat-option>
+            </mat-select>
+            <div *ngIf="formProducto.controls['categoria']?.touched && formProducto.controls['categoria']?.errors?.['required']"
+                appErrorTooltip parent="categoria">
+                El campo es requerido!
+            </div>
+
+            <label class="contendorFormulario__label" for="imagen">Imagen</label>
+            <input class="contendorFormulario__inputs" formControlName="imagen" id="imagen" type="text">
+            <div *ngIf="formProducto.controls['imagen']?.touched && formProducto.controls['imagen']?.errors?.['required']"
+                appErrorTooltip parent="imagen">
+                El campo es requerido!
+            </div>
+
+            <button *ngIf="!editar" class="contendorFormulario__boton" [disabled]="!formProducto.valid"
+                type="submit">Agregar
+                Producto</button>
+            <button *ngIf="editar" class="contendorFormulario__boton" [disabled]="!formProducto.valid">Editar
+                Producto</button>
+        </form>
+    </div>
+</div>
