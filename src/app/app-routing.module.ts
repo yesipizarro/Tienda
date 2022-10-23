@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutenticacionGuard } from './guards/autenticacion.guard';
 
 const routes: Routes = [
   {
     path: 'inicio',
+    canActivate: [AutenticacionGuard],
     loadChildren: () => import('./modulos/ventas/ventas.module').then(m => m.VentasModule)
   },
   {
@@ -16,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'inicio',
+    redirectTo: 'autenticacion',
     pathMatch: 'full'
   }
 ];

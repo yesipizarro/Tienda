@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserCredential } from '@firebase/auth';
 import { interval, Subject, Subscription, take, takeUntil } from 'rxjs';
 import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.service';
+import { StorageNavegadorService } from 'src/app/servicios/storage-navegador.service';
 
 
 @Component({
@@ -21,7 +22,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     password: new FormControl(undefined, [Validators.required])
   })
 
-  constructor(private servicio: ConexionFirebaseService, private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(
+    private servicio: ConexionFirebaseService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    private storageNavegadorService: StorageNavegadorService) { }
 
   ngOnDestroy() {
     // this.subscripcion.unsubscribe();
@@ -30,6 +35,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (this.storageNavegadorService.obtenerSesion()) {
+      this.router.navigate(['inicio']);
+    }
     // const seconds = interval(1000);
     // this.subscripcion = seconds
     //   .subscribe(value => console.log(value));
@@ -49,9 +57,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     let loginCorreo = this.formLogin.value.correo
     let logincontraseña = this.formLogin.value.password
     this.servicio.login(loginCorreo, logincontraseña).subscribe({
-      next: (usuario: UserCredential) => {
-        this.router.navigateByUrl('');
-
+      next: () => {
+        this.router.navigate(['inicio']);
       },
       error: (error) => {
         this._snackBar.open(error, "ok");
@@ -62,8 +69,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   ingresarGoogle() {
     this.servicio.iniciarSesionGoogle()
       .subscribe({
-        next: (resultado) => {
-          this.router.navigateByUrl('');
+        next: () => {
+          this.router.navigate(['inicio']);
         },
         error: (error) => {
           this._snackBar.open(error, "ok");

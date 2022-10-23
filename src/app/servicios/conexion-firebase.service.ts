@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FirebaseError, initializeApp } from "firebase/app";
-import { catchError, from, map, Observable } from 'rxjs';
+import { catchError, from, map, Observable, tap } from 'rxjs';
 import { GoogleAuthProvider } from "firebase/auth";
 import { getDatabase, ref, set, get, child, remove } from "firebase/database";
 import { IProductoDetalle, IProductoFirebase } from '../modulos/compartido/interfaces/producto.interface';
+import { StorageNavegadorService } from './storage-navegador.service';
 
 enum ErrorFirebaseCustom {
   INICIO_SESION_FALLA = 'No se pudo iniciar sesión',
@@ -32,7 +33,7 @@ export class ConexionFirebaseService {
   googleAuth = new GoogleAuthProvider();
   database = getDatabase();
 
-  constructor() { }
+  constructor(private storageNavegadorService: StorageNavegadorService) { }
 
   crearUsuario(infoEmail: string, infocontraseña: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, infoEmail, infocontraseña))
@@ -50,6 +51,7 @@ export class ConexionFirebaseService {
   login(loginCorreo: string, logincontraseña: string) {
     return from(signInWithEmailAndPassword(this.auth, loginCorreo, logincontraseña))
       .pipe(
+        tap(this.storageNavegadorService.guardarSesion),
         catchError((error: FirebaseError) => {
           let message = ErrorFirebaseCustom.INICIO_SESION_FALLA;
           if (error.code === "auth/wrong-password") {
@@ -63,6 +65,7 @@ export class ConexionFirebaseService {
   iniciarSesionGoogle() {
     return from(signInWithPopup(this.auth, this.googleAuth))
       .pipe(
+        tap(usuario => this.storageNavegadorService.guardarSesion(usuario)),
         catchError(() => {
           throw ErrorFirebaseCustom.INICIO_SESION_FALLA;
         })
