@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserCredential } from '@firebase/auth';
+import { interval, Subject, Subscription, take, takeUntil } from 'rxjs';
 import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.service';
 
 
@@ -11,7 +12,9 @@ import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.ser
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  // subscripcion: Subscription;
+  // destruir: Subject<boolean> = new Subject();
 
   formLogin: FormGroup = new FormGroup({
     correo: new FormControl(undefined, [Validators.required, Validators.email]),
@@ -20,7 +23,26 @@ export class LoginComponent implements OnInit {
 
   constructor(private servicio: ConexionFirebaseService, private _snackBar: MatSnackBar, private router: Router) { }
 
+  ngOnDestroy() {
+    // this.subscripcion.unsubscribe();
+    // this.destruir.next(true);
+    // this.destruir.complete();
+  }
+
   ngOnInit(): void {
+    // const seconds = interval(1000);
+    // this.subscripcion = seconds
+    //   .subscribe(value => console.log(value));
+
+    // seconds
+    //   .pipe(
+    //     takeUntil(this.destruir)
+    //   ).subscribe(value => console.log(value));
+
+    // seconds
+    //   .pipe(
+    //     take(5)
+    //   ).subscribe(value => console.log(value));
   }
 
   enviar() {

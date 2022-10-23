@@ -1,5 +1,13 @@
 <div class="contenedorHeader">
     <span class="contenedorHeader__titulo">Peludos Felices</span>
     <span class="contenedorHeader__espacio"></span>
-    <mat-icon class="contenedorHeader__carro">shopping_cart</mat-icon>
+
+    <button class="contenedorCarro" (click)="pedidos()">
+        <mat-icon class="contenedorCarro__carroIcon">shopping_cart</mat-icon>
+        <div *ngIf="pedido" class="contenedorCarro__modal">
+            <app-carrito></app-carrito>
+        </div>
+    </button>
+
+
 </div>

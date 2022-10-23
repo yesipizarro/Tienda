@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProductoDetalle } from 'src/app/modulos/compartido/interfaces/producto.interface';
 import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.service';
+import { OrdenesCarritoService } from 'src/app/servicios/ordenes-carrito.service';
 
 @Component({
   selector: 'app-tarjeta',
@@ -10,7 +11,8 @@ import { ConexionFirebaseService } from 'src/app/servicios/conexion-firebase.ser
 export class TarjetaComponent implements OnInit {
 
   productos: IProductoDetalle[] = [];
-  constructor(private conexionFirebaseService: ConexionFirebaseService) { }
+  constructor(private conexionFirebaseService: ConexionFirebaseService,
+    private ordenesCarritoService: OrdenesCarritoService) { }
 
   ngOnInit(): void {
     this.conexionFirebaseService.getProductos()
@@ -18,7 +20,7 @@ export class TarjetaComponent implements OnInit {
   }
 
   agregar(producto: IProductoDetalle) {
-    console.log(`dieron click en agregar para el producto ${producto.nombre}`)
+    this.ordenesCarritoService.pedidoCarrito(producto)
   }
 
 }
