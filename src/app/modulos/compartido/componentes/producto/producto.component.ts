@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProductoDetalle } from '../modulos/compartido/interfaces/producto.interface';
+import { IProductoDetalle } from '../../interfaces/producto.interface';
 
 @Component({
   selector: 'app-producto',

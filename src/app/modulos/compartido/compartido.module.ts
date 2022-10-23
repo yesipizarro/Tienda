@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductoComponent } from '../../producto/producto.component';
+import { ProductoComponent } from './componentes/producto/producto.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ErrorTooltipDirective } from './directivas/resaltar.directive';
 

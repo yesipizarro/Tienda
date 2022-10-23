@@ -1,1 +1,8 @@
-<p>carrito works!</p>
+<div class="contenedorSubtotal">
+    <app-producto *ngFor="let producto of productosPedidos" [producto]="producto"></app-producto>
+    <span class="contenedorSubtotal__label">Subtotal</span>
+    <div class="contenedorPrecio">
+        <span class="contenedorPrecio__precio">$50.000</span>
+    </div>
+</div>
+<button class="contenedorSubtotal__boton">Finalizar Pedido</button>

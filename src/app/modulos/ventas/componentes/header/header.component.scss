@@ -52,39 +52,4 @@
             border-right: solid 15px transparent;
         }
     }
-    &__boton {
-        margin: 10px 15px;
-        width: 90%;
-        height: 50px;
-        background: $easternBlue;
-        color: $blanco;
-        border-radius: 30px;
-        border: solid 1px;
-        font-size: 18px;
-    }
-}
-
-.contenedorSubtotal {
-    display: flex;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__label {
-        padding-right: 15px;
-        font-size: 18px;
-        color: #4b4a4b;
-        font-weight: 700;
-        &::after {
-            content: ": ";
-        }
-    }
-}
-
-.contenedorPrecio {
-    &__precio {
-        color: $easternBlue;
-        font-size: 18px;
-        font-weight: 700;
-    }
 }

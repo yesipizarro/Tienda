@@ -27,8 +27,7 @@ const routesVentas: Routes = [
       {
         path: '',
         component: TarjetaComponent
-      },
-
+      }
     ]
   }
 ]
