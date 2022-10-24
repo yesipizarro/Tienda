@@ -9,6 +9,7 @@ import { IProductoDetalle } from '../../interfaces/producto.interface';
 export class ProductoComponent implements OnInit {
   @Input() producto: IProductoDetalle;
   @Input() isAdmin: boolean;
+  @Input() isCart: boolean;
   @Output() onClickAccion: EventEmitter<boolean> = new EventEmitter();
   @Output() eliminar: EventEmitter<boolean> = new EventEmitter();
   constructor() { }

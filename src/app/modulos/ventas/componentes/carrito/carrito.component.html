@@ -1,8 +1,19 @@
-<div class="contenedorSubtotal">
-    <app-producto *ngFor="let producto of productosPedidos" [producto]="producto"></app-producto>
-    <span class="contenedorSubtotal__label">Subtotal</span>
-    <div class="contenedorPrecio">
-        <span class="contenedorPrecio__precio">$50.000</span>
+<ng-container *ngIf="productosPedidos.length; else noProductos">
+    <div class="contenedorSubtotal">
+        <span class="contenedorSubtotal__label">Subtotal</span>
+        <div class="contenedorPrecio">
+            <span class="contenedorPrecio__precio">{{total |currency}}</span>
+        </div>
     </div>
-</div>
-<button class="contenedorSubtotal__boton">Finalizar Pedido</button>
+    <div class="contendorBoton">
+        <button class="contendorBoton__boton">Finalizar Pedido</button>
+    </div>
+
+    <div class="contenedorPedidos">
+        <app-producto [isCart]="true" *ngFor="let producto of productosPedidos" [producto]="producto"></app-producto>
+    </div>
+</ng-container>
+
+<ng-template #noProductos>
+    <div class="carroVacio">No tienes ningún artículo en tu carrito.</div>
+</ng-template>

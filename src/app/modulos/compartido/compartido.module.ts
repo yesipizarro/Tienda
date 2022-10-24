@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductoComponent } from './componentes/producto/producto.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ErrorTooltipDirective } from './directivas/resaltar.directive';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -11,6 +12,7 @@ import { ErrorTooltipDirective } from './directivas/resaltar.directive';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatIconModule
   ],
   exports: [ProductoComponent, ErrorTooltipDirective]
 })

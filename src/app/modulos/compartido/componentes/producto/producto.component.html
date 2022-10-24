@@ -1,4 +1,4 @@
-<div class="contenedortarjetas">
+<div *ngIf="!isCart" class="contenedortarjetas">
     <div class="contenedorImagen">
         <img class="contenedorImagen__imagenTamaño" [src]="producto?.imagen">
     </div>
@@ -12,16 +12,41 @@
                 desde
             </p>
             <p class="contenedorPrecio__precio">
-                {{producto?.precio}}
+                {{producto?.precio | currency}}
             </p>
         </div>
         <div>
             <button class="contenedorPrecio__boton" mat-raised-button color="primary"
-                (click)="onClickAccion.emit()">{{isAdmin ? 'Editar' :
+                (click)="onClickAccion.emit()">{{isAdmin? 'Editar' :
                 'Agregar'}}
             </button>
             <button *ngIf="isAdmin" class="contenedorPrecio__boton" mat-raised-button color="warn"
                 (click)="eliminar.emit()">Eliminar </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isCart" class="contenedortarjetasCarro">
+    <img class="contenedortarjetasCarro__imagenTamaño" [src]="producto?.imagen">
+
+    <div class="contenedorInfoCarro">
+        <span class="contenedorInfoCarro__nombre">{{producto?.nombre}}</span>
+        <div class="contenedorPrecioCarro">
+            <p class="contenedorPrecioCarro__precio">
+                {{producto?.precio | currency }}
+            </p>
+        </div>
+        <div class="contenedorAcciones">
+            <div class="contendorCantidades">
+                <mat-icon class="contendorCantidades__remove">remove</mat-icon>
+                <input class="contendorCantidades__cantidadPedido">
+                <mat-icon class="contendorCantidades__add">add</mat-icon>
+            </div>
+
+            <div class="contendorBotones">
+                <mat-icon class="contendorBotones__botones">delete_outline</mat-icon>
+            </div>
+
         </div>
     </div>
 </div>

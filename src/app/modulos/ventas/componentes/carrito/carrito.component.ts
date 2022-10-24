@@ -16,4 +16,22 @@ export class CarritoComponent implements OnInit {
     this.productosPedidos = this.ordenesCarritoService.productosPedidos;
   }
 
+  get total(): number {
+    return this.productosPedidos
+      .map(producto => producto.precio)
+      .reduce(
+        (precioAnterior: number, precioActual: number) => {
+          return precioAnterior + precioActual;
+        },
+        0
+      );
+  }
+
+  calcularTotal() {
+    if (this.productosPedidos.length >= 1) {
+      for (let c of this.productosPedidos) {
+        console.log(c.precio)
+      }
+    }
+  }
 }
